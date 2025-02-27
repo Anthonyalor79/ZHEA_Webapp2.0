@@ -1,0 +1,31 @@
+/* nav bar logo styling
+.companyLogo{
+    height: 60px;
+    width: auto;
+    margin-inline: 20px;
+} */
+.navbar {
+    padding: 10px 20px;
+  }
+  
+  .companyLogo {
+    height: 60px;
+    width: auto;
+    margin-inline: 20px;
+  }
+  
+  .navbar-nav .nav-item {
+    margin-left: 15px;
+    background-color: rgba(255, 255, 255, 0.2); /* Temporary background color for debugging */
+  
+  }
+  
+  .nav-link {
+    color: white !important;
+    font-weight: 500;
+  }
+  
+  .nav-link:hover {
+    color: #f8f9fa !important;
+  }
+  

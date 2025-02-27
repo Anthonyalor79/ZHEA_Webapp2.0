@@ -1,0 +1,9 @@
+.card:hover {
+    transform: translateY(10px);
+    color: blue;
+    transition: transform 0.3s ease;
+  }
+.Links{
+  text-decoration: none;
+}
+
