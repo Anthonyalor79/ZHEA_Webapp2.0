@@ -1,0 +1,27 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+      {
+          "name": "Next.js: Debug (Server)",
+          "type": "node",
+          "request": "launch",
+          "runtimeExecutable": "node",
+          "args": ["--inspect-brk", "./node_modules/next/dist/bin/next", "dev"],
+          "cwd": "${workspaceFolder}",
+          "console": "integratedTerminal",
+          "protocol": "inspector",
+          "sourceMaps": true,
+          "env": {
+              "NODE_ENV": "development"
+          }
+      },
+      {
+          "name": "Next.js: Debug (Client)",
+          "type": "chrome",
+          "request": "launch",
+          "url": "http://localhost:3000",
+          "webRoot": "${workspaceFolder}",
+          "sourceMaps": true
+      }
+  ]
+}

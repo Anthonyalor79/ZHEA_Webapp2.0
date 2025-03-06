@@ -9,23 +9,22 @@ export default function MemberForm({ obj, onClose }) {
     return <p className="text-center">No member selected.</p>;
   }
 
-  const { name, email, title, major, dob, skills, photo, createdat } = obj;
+  const { firstname, lastname, email, title, major, dob, skills, photo, createdat } = obj;
 
   return (
     <div className="container mt-5">
       <button className="btn btn-secondary mb-3" onClick={onClose}>← Back to Team</button> {/* ✅ Back button */}
       
       <header className="text-center mb-4">
-        {photo && <img src={`data:image/jpeg;base64,${photo}`} alt={name} className="profile-img" />}
-        <h1 className="display-4">{name}</h1>
+        {photo && <img src={`data:image/jpeg;base64,${photo}`} alt={firstname} className="profile-img mx-auto" />}
+        <h1 className="display-4">{firstname} {lastname}</h1>
         <p className="lead">{title}</p>
       </header>
 
       <section className="mb-5">
         <h2>About Me</h2>
         <p>
-          Hi, my name is {name}, a passionate undergrad pursuing a bachelor's degree in Computer Science with experience in web
-          development and a strong focus on creating responsive and user-friendly web applications.
+          Hi, my name is {firstname}, its a pleasure meeting you!.
         </p>
       </section>
 

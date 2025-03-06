@@ -9,6 +9,11 @@ const pool = new Pool({
   user: process.env.DB_USER,
   password: process.env.DB_PASSWORD,
   port: process.env.DB_PORT,
+
+  // Uncomment when using Local DB
+  // ssl: false,
+
+  // Uncomment when using Remote DB
   ssl: {
     rejectUnauthorized: false, // Allows self-signed certificates (for production, use a proper CA)
   },

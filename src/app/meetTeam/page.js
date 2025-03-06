@@ -1,13 +1,11 @@
 "use client";
 
 import React, { useEffect, useState } from 'react';
-import './ContactUs.css';
+import './MeetTeam.css';
 import { getMembers } from '../../utilis/api'; 
-import Link from 'next/link'; 
 import MemberForm from './MemberForm';
-//import Loading from '@/components/Loading';  // ✅ Fixed loading component import
 
-function ContactUs() {
+function MeetTeam() {
   const [developers, setDevelopers] = useState([]);
   const [loadingStatus, setLoading] = useState(true);
   const [selectedDeveloper, setSelectedDeveloper] = useState(null);
@@ -28,7 +26,11 @@ function ContactUs() {
   }, []);
 
   if (loadingStatus) {
-    return <h2> loading </h2>;  // ✅ Corrected the way to use a React component
+    return (
+      <div className="container mt-5">
+        <div className="loader"></div>
+      </div>
+      );
   }
 
 
@@ -46,7 +48,7 @@ function ContactUs() {
               <div className="card h-100 shadow-sm card:hover"
               onClick={() => setSelectedDeveloper(developer)}>
                 <div className="card-body text-center">
-                  <h5 className="card-title">{developer.name}</h5>  {/* ✅ Corrected property access */}
+                  <h5 className="card-title">{developer.firstname} {developer.lastname}</h5>  {/* ✅ Corrected property access */}
                   <p className="card-text text-muted">{developer.title}</p>
                 </div>
               </div>
@@ -57,4 +59,4 @@ function ContactUs() {
   );
 }
 
-export default ContactUs;
+export default MeetTeam;

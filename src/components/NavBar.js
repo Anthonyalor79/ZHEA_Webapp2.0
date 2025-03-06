@@ -22,7 +22,7 @@ const Navbar = () => {
               </Link>
             </li>
             <li>
-              <Link href="/joinTeam" className="text-white hover:text-gray-300 transition duration-300">
+              <Link href="/joinTeam" key={new Date().getTime()} className="text-white hover:text-gray-300 transition duration-300">
                Join Team
               </Link>
             </li>

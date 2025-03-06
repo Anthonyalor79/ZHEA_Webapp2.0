@@ -8,12 +8,13 @@ const programmingLanguages = [
 ];
 
 const AddMemberForm = () => {
-  const [name, setName] = useState('');
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
   const [dob, setDob] = useState('');
   const [email, setEmail] = useState('');
   const [major, setMajor] = useState('');
   const [title, setTitle] = useState('');
-  const [languages, setLanguages] = useState([]);
+  const [skills, setSkills] = useState([]);
   const [photo, setPhoto] = useState(null);
 
   const handleSubmit = async (e) => {
@@ -22,8 +23,30 @@ const AddMemberForm = () => {
       const reader = new FileReader();
       reader.onloadend = async () => {
         const base64Photo = reader.result.split(',')[1];
-        await addMember(name, email, title, major, dob, languages, base64Photo);
-        alert('Member added successfully!');
+        const memberData = {
+          firstName,
+          lastName,
+          email,
+          title,
+          major,
+          dob,
+          skills,
+          photo: base64Photo,
+        };
+        const response = await addMember(memberData);
+        if (response.status === 200) {
+          alert("Request sent successfully!");
+          setFirstName('');
+          setLastName('');
+          setDob('');
+          setEmail('');
+          setMajor('');
+          setTitle('');
+          setSkills([]);
+          setPhoto(null);
+        }else{
+          alert("There was an error please contact the administrator");
+        }
       };
       reader.readAsDataURL(photo);
     } catch (error) {
@@ -35,19 +58,23 @@ const AddMemberForm = () => {
   const handleLanguageChange = (e) => {
     const { value, checked } = e.target;
     if (checked) {
-      setLanguages([...languages, value]);
+      setSkills([...skills, value]);
     } else {
-      setLanguages(languages.filter((language) => language !== value));
+      setSkills(skills.filter((skill) => skill !== value));
     }
   };
 
   return (
     <div className="container mt-5">
-      <h2 className="text-center mb-4">Add New Member</h2>
+      <h2 className="text-center mb-4">New Member Form:</h2>
       <form onSubmit={handleSubmit}>
         <div className="mb-3">
-          <label className="form-label">Name:</label>
-          <input type="text" className="form-control" value={name} onChange={(e) => setName(e.target.value)} required />
+          <label className="form-label">First Name:</label>
+          <input type="text" className="form-control" value={firstName} onChange={(e) => setFirstName(e.target.value)} required />
+        </div>
+        <div className="mb-3">
+          <label className="form-label">Last Name:</label>
+          <input type="text" className="form-control" value={lastName} onChange={(e) => setLastName(e.target.value)} required />
         </div>
         <div className="mb-3">
           <label className="form-label">Date of Birth:</label>
@@ -67,26 +94,26 @@ const AddMemberForm = () => {
         </div>
         <div className="mb-3">
           <label className="form-label">Programming Languages:</label>
-          <label multiple className="form-control" value={languages} onChange={handleLanguageChange}>
-            {programmingLanguages.map((language) => (
-              <div key={language} className="form-check">
+          <div className="form-control">
+            {programmingLanguages.map((skill) => (
+              <div key={skill} className="form-check">
               <input
                 type="checkbox"
                 className="form-check-input"
-                value={language}
+                value={skill}
                 onChange={handleLanguageChange}
-                checked={languages.includes(language)}
+                checked={skills.includes(skill)}
               />
-              <label className="form-check-label">{language}</label>
+              <label className="form-check-label">{skill}</label>
               </div>
             ))}
-          </label>
+          </div>
         </div>
         <div className="mb-3">
           <label className="form-label">Photo:</label>
           <input type="file" className="form-control" accept="image/*" onChange={(e) => setPhoto(e.target.files[0])} required />
         </div>
-        <button type="submit" className="btn btn-primary">Add Member</button>
+        <button type="submit" className="btn btn-primary">Send Form</button>
       </form>
     </div>
   );

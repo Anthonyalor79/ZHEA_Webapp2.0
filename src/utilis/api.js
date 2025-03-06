@@ -1,5 +1,3 @@
-const API_BASE_URL = "http://127.0.0.1:5000/api"; // Change if deployed
-
 export const getMembers = async () => {
   try {
     const response = await fetch(`api/members`);
@@ -27,8 +25,9 @@ export const addMember = async (memberData) => {
       throw new Error("Failed to add member");
     }
 
-    return await response.json();
+    return {status: response.status};
   } catch (error) {
+    alert("Failed to send request.");
     console.error("Error adding member:", error);
     return null;
   }

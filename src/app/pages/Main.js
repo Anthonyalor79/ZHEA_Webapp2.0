@@ -4,9 +4,9 @@ import './Main.css';
 
 function Main(){
     return(
-        <div className="container mt-5 text-center">
+        <div className="container mt-5" id = "mainPage">
             <div className="mb-4">
-                <img src='assets/icons/zhea.svg' alt="Anthony Alor" className="logo-img" />
+                <img src='assets/icons/zhea.svg' alt="Anthony Alor" id = "main-logo-img" />
             </div>
             <h1>Welcome to ZHEA Tech</h1>
             <a href="/joinTeam" className="btn btn-secondary mb-4">

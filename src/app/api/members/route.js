@@ -32,23 +32,25 @@ export async function POST(req) {
     const photoBuffer = data.photo ? Buffer.from(data.photo, "base64") : null;
 
     const query = `
-      INSERT INTO member (first_name, last_name, middle_name, email, date_of_birth, photo)
-      VALUES ($1, $2, $3, $4, $5, $6)
+      INSERT INTO member (firstname, lastname, email, title, major, dob, skills, photo)
+      VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
       RETURNING id
     `;
 
     const values = [
-      data.fname,
-      data.lname,
-      data.mname,
+      data.firstName,
+      data.lastName,
       data.email,
+      data.title,
+      data.major,
       data.dob,
+      data.skills,
       photoBuffer,
     ];
 
     const result = await client.query(query, values);
-    
-    return NextResponse.json({ id: result.rows[0].id }, { status: 201 });
+
+    return NextResponse.json({ id: result.rows[0].id }, { status: 200 });
   } catch (error) {
     console.error("Database error:", error);
     return NextResponse.json({ error: "Failed to add member" }, { status: 500 });
