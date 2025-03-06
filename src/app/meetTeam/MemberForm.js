@@ -3,6 +3,8 @@
 import React from "react";
 import icons from "@/../public/assets/icons";
 import "./MemberForm.css";
+import Image from "next/image";
+import Link from "next/link";
 
 export default function MemberForm({ obj, onClose }) {
   if (!obj) {
@@ -16,7 +18,7 @@ export default function MemberForm({ obj, onClose }) {
       <button className="btn btn-secondary mb-3" onClick={onClose}>← Back to Team</button> {/* ✅ Back button */}
       
       <header className="text-center mb-4">
-        {photo && <img src={`data:image/jpeg;base64,${photo}`} alt={firstname} className="profile-img mx-auto" />}
+        {photo && <Image src={`data:image/jpeg;base64,${photo}`} alt={firstname} className="profile-img mx-auto" width={300} height={300}/>}
         <h1 className="display-4">{firstname} {lastname}</h1>
         <p className="lead">{title}</p>
       </header>
@@ -33,7 +35,7 @@ export default function MemberForm({ obj, onClose }) {
         <ul className="list-inline">
           {skills?.map((skill, index) => (
             <li key={index} className="list-inline-item badge bg-secondary p-2 m-1">
-              <img src={icons[skill] ?? icons["default"]} alt={skill} className="skill-icon" /> {skill}
+              <Image src={icons[skill] ?? icons["default"]} alt={skill} className="skill-icon" width={40} height={40} /> {skill}
             </li>
           ))}
         </ul>
@@ -43,9 +45,9 @@ export default function MemberForm({ obj, onClose }) {
         <h2>Contact</h2>
         <p>
           Email me at{" "}
-          <a href={`mailto:${email}`} className="text-decoration-none">
+          <Link href={`mailto:${email}`} className="text-decoration-none">
             {email}
-          </a>
+          </Link>
         </p>
       </section>
     </div>

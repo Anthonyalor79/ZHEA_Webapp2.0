@@ -1,14 +1,15 @@
 import Link from 'next/link';
 import "./NavBar.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Image from 'next/image';
 
 const Navbar = () => {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
       <div className="container-fluid">
-        <a className="navbar-brand" href="/">
-          <img src= 'assets/icons/zhea.svg' alt='company logo' className='companyLogo'/>
-        </a>
+        <Link className="navbar-brand" href="/">
+          <Image src= 'assets/icons/zhea.svg' alt='company logo' className='companyLogo' width={60} height ={60}/>
+        </Link>
 
           <ul className="flex space-x-6">
             <li>
