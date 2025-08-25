@@ -8,7 +8,7 @@ const Navbar = () => {
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
       <div className="container-fluid">
         <Link className="navbar-brand" href="/">
-          <Image src= 'assets/icons/zhea.svg' alt='company logo' className='companyLogo' width={60} height ={60}/>
+          <Image src= 'assets/icons/zhea-white.svg' alt='company logo' className='companyLogo' width={60} height ={60}/>
         </Link>
 
           <ul className="flex space-x-6">
